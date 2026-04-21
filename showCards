@@ -1,0 +1,53 @@
+// This function creates and displays cards for each resource
+function showCards(data) {
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  
+  data.forEach(function(resource) {
+    const card = document.createElement("div");
+    card.className = "card";
+    
+    card.innerHTML = `
+      <h2>${resource.name}</h2>
+      <p><strong>Category:</strong> ${resource.category}</p>
+      <p><strong>Area:</strong> ${resource.area}</p>
+      <p><strong>Address:</strong> ${resource.address}</p>
+      <p><strong>Phone:</strong> ${resource.phone}</p>
+      <p><strong>Hours:</strong> ${resource.hours}</p>
+      <p>${resource.description}</p>
+    `;
+    
+    cardContainer.appendChild(card);
+  });
+}
+
+// Show all cards when page loads
+document.addEventListener("DOMContentLoaded", function() {
+  showCards(resources);
+  
+  const searchInput = document.getElementById("search-input");
+  searchInput.addEventListener("input", function() {
+    searchResources(searchInput.value);
+  });
+});
+
+// Feature 1 - Filter by category
+function filterByCategory(category) {
+  if (category === "all") {
+    showCards(resources);
+  } else {
+    const filtered = resources.filter(function(resource) {
+      return resource.category === category;
+    });
+    showCards(filtered);
+  }
+}
+
+// Feature 2 - Search by name or area
+function searchResources(query) {
+  const filtered = resources.filter(function(resource) {
+    return resource.name.toLowerCase().includes(query.toLowerCase()) ||
+           resource.area.toLowerCase().includes(query.toLowerCase());
+  });
+  showCards(filtered);
+}

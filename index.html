@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>VetConnect LA</title>
+  <meta name="description" content="Resources for Homeless Veterans in Los Angeles" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="header-flag-stripe"></div>
+    <div class="header-inner">
+      <h1 class="title">&#11088; VetConnect LA</h1>
+      <p class="subtitle">Resources for Homeless Veterans in Santa Monica &amp; Los Angeles</p>
+    </div>
+    <div class="header-flag-stripe header-flag-stripe--blue"></div>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="search-input" placeholder="Search by name or area..." />
+    
+    <div class="filter-buttons">
+      <button onclick="filterByCategory('all')">All</button>
+      <button onclick="filterByCategory('Shelter')">Shelter</button>
+      <button onclick="filterByCategory('Food')">Food</button>
+      <button onclick="filterByCategory('Mental Health')">Mental Health</button>
+      <button onclick="filterByCategory('Medical')">Medical</button>
+      <button onclick="filterByCategory('Employment')">Employment</button>
+      <button onclick="filterByCategory('Legal Aid')">Legal Aid</button>
+    </div>
+  </div>
+
+  <div class="results-meta">
+    <p id="results-counter">Showing 10 resources</p>
+  </div>
+
+  <div id="card-container"></div>
+
+  <div id="empty-state" class="empty-state hidden">
+    <span class="empty-icon">&#128269;</span>
+    <p class="empty-title">No resources found</p>
+    <p class="empty-sub">Try a different search term or browse all categories.</p>
+  </div>
+
+  <script src="scripts.js"></script>
+
+</body>
+</html>
