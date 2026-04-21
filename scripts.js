@@ -12,7 +12,8 @@ const resources = [
     address: "11301 Wilshire Blvd, Los Angeles, CA 90073",
     phone: "(310) 478-3711",
     hours: "Mon-Fri 8am-4:30pm",
-    description: "Full medical and mental health services for veterans."
+    description: "Full medical and mental health services for veterans.",
+    urgent: false
   },
   {
     name: "New Directions for Veterans",
@@ -21,7 +22,8 @@ const resources = [
     address: "11303 Wilshire Blvd, Los Angeles, CA 90073",
     phone: "(310) 914-4152",
     hours: "24/7",
-    description: "Transitional housing and rehabilitation for homeless veterans."
+    description: "Transitional housing and rehabilitation for homeless veterans.",
+    urgent: true
   },
   {
     name: "St. Joseph Center",
@@ -30,7 +32,8 @@ const resources = [
     address: "204 Hampton Dr, Venice, CA 90291",
     phone: "(310) 396-6468",
     hours: "Mon-Fri 9am-5pm",
-    description: "Meals, case management, and support services."
+    description: "Meals, case management, and support services.",
+    urgent: false
   },
   {
     name: "Volunteers of America - Veterans",
@@ -39,7 +42,8 @@ const resources = [
     address: "3600 S. Broadway, Los Angeles, CA 90007",
     phone: "(213) 389-1500",
     hours: "Mon-Fri 8am-5pm",
-    description: "Job training and employment support for veterans."
+    description: "Job training and employment support for veterans.",
+    urgent: false
   },
   {
     name: "Didi Hirsch Mental Health Services",
@@ -48,7 +52,8 @@ const resources = [
     address: "4760 S. Sepulveda Blvd, Culver City, CA 90230",
     phone: "(800) 854-7771",
     hours: "24/7 Crisis Line",
-    description: "Mental health crisis support and counseling for veterans."
+    description: "Mental health crisis support and counseling for veterans.",
+    urgent: true
   },
   {
     name: "Safe Haven - VA Domiciliary",
@@ -57,7 +62,8 @@ const resources = [
     address: "11301 Wilshire Blvd, Los Angeles, CA 90073",
     phone: "(310) 268-3494",
     hours: "24/7",
-    description: "Residential rehabilitation for homeless veterans."
+    description: "Residential rehabilitation for homeless veterans.",
+    urgent: true
   },
   {
     name: "American Legion Post 283",
@@ -66,7 +72,8 @@ const resources = [
     address: "1816 Lincoln Blvd, Santa Monica, CA 90404",
     phone: "(310) 394-9518",
     hours: "Mon-Sat 10am-6pm",
-    description: "Legal assistance and benefits claims support for veterans."
+    description: "Legal assistance and benefits claims support for veterans.",
+    urgent: false
   },
   {
     name: "PATH (People Assisting The Homeless)",
@@ -75,7 +82,8 @@ const resources = [
     address: "340 N. Madison Ave, Los Angeles, CA 90004",
     phone: "(323) 644-2200",
     hours: "24/7",
-    description: "Emergency shelter and housing navigation for veterans."
+    description: "Emergency shelter and housing navigation for veterans.",
+    urgent: true
   },
   {
     name: "Weingart Center",
@@ -84,7 +92,8 @@ const resources = [
     address: "566 S. San Pedro St, Los Angeles, CA 90013",
     phone: "(213) 627-9000",
     hours: "Daily 7am-7pm",
-    description: "Meals, shelter, and comprehensive services for homeless veterans."
+    description: "Meals, shelter, and comprehensive services for homeless veterans.",
+    urgent: false
   },
   {
     name: "Veterans Legal Services",
@@ -93,7 +102,8 @@ const resources = [
     address: "1251 S. Barrington Ave, Los Angeles, CA 90025",
     phone: "(310) 914-4152",
     hours: "Mon-Fri 9am-5pm",
-    description: "Free legal help with benefits, housing, and discharge upgrades."
+    description: "Free legal help with benefits, housing, and discharge upgrades.",
+    urgent: false
   }
 ];
 
@@ -129,6 +139,7 @@ function showCards(data) {
       <p><strong>Phone:</strong> ${resource.phone}</p>
       <p><strong>Hours:</strong> ${resource.hours}</p>
       <p>${resource.description}</p>
+      <a href="tel:${resource.phone}" class="call-btn">&#128222; Call Now</a>
     `;
 
     cardContainer.appendChild(card);
@@ -156,12 +167,22 @@ function searchResources(query) {
   showCards(filtered);
 }
 
+// Feature 3 - Filter urgent resources
+function filterUrgent() {
+  const urgent = resources.filter(function(resource) {
+    return resource.urgent === true;
+  });
+  showCards(urgent);
+}
+
 // Show all cards when page loads
 document.addEventListener("DOMContentLoaded", function() {
   showCards(resources);
-  
+
   const searchInput = document.getElementById("search-input");
   searchInput.addEventListener("input", function() {
     searchResources(searchInput.value);
   });
+
+  document.getElementById("urgentBtn").addEventListener("click", filterUrgent);
 });

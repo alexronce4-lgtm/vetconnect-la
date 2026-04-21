@@ -235,6 +235,38 @@ button.active {
   color: #1a1a1a;
 }
 
+.call-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 9px 18px;
+  background: #FFFC00;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background 0.18s, transform 0.14s;
+}
+
+.call-btn:hover {
+  background: #e6e300;
+  transform: translateY(-1px);
+}
+
+#urgentBtn {
+  margin-top: 14px;
+  background: #B22234;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+#urgentBtn:hover {
+  background: #8f1a28;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(178, 34, 52, 0.4);
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   #card-container {
