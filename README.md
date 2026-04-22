@@ -7,7 +7,7 @@ Built by Alex Ronce for the Snap Engineering Academy 2026 Stage 2 Project Assess
 ## Features
 - Search resources by name or area
 - Filter by category (Shelter, Food, Mental Health, Medical, Employment, Legal Aid)
-- Need Help Now — instantly shows urgent 24/7 resources
+- Need Help Now, instantly shows urgent 24/7 resources
 - Call Now button on each card
 
 ## Live Site
